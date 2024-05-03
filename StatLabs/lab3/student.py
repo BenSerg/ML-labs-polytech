@@ -12,7 +12,7 @@ class StudentDistribution(Distribution):
         self.val = z / np.sqrt(chi / N)
 
     def var_T(self) -> float:
-        return self.N * (self.N - 2)
+        return self.N / (self.N - 2)
 
     def mean_T(self) -> float:
         return 0

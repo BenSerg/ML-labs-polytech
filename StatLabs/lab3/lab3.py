@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 from chi_square import ChiSquaredDistribution
 from exponential import ExponentialDistribution
@@ -9,6 +10,7 @@ from weibull import WeibullDistribution
 
 
 def main():
+    np.random.seed(3)
     print('Дискретные распределения\nМеню')
     print('Выберите распределение\n'
           '1 - равномерное распределение\n'
@@ -26,7 +28,7 @@ def main():
             print('high = ', end='')
             high = float(input())
             print('size = ', end='')
-            size = float(input())
+            size = int(input())
             uniform = UniformDistribution(low=low, high=high, size=size)
             M, D = uniform.mean(), uniform.var()
             print(f'Мат. ожидание и дисперсия соответственно: M = {M}, D = {D}')
@@ -90,6 +92,7 @@ def main():
             plt.xlabel('Значения выборки')
             plt.ylabel('Частота')
             plt.title('Гистограмма распределения выборки')
+            plt.savefig('hist.png')
             plt.show()
             from scipy.stats import weibull_min
             from scipy.stats import chi2
